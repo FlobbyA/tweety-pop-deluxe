@@ -1,0 +1,19 @@
+Build 3.1.2 — Audio Integration Pass
+สำหรับเกมที่ติดตั้ง3.1.1แล้ว
+
+แตก ZIP แล้วอัปโหลดเนื้อหาข้างในไป root เดิมของ repository โดยรักษาโฟลเดอร์
+แทนที่ index.html และเพิ่มไฟล์3.1.2กับ assets/audio-3.1.2 ทั้งโฟลเดอร์
+ไม่ลบไฟล์เก่า ไม่เปลี่ยนเพลง ภาพ เกม ด่าน หรือ helper
+หลัง Pages deploy เปิด URL เดิมและตรวจป้าย3.1.2
+
+ทดสอบ: ยิงไม่ติดกลุ่ม / ยิงแตกกลุ่ม+เปลือก / ไข่ฟัก+เสียงลูกแมว /
+เสียง Nice, combo, misses, danger, helper, Level Clear, Game Over /
+Sound Off/On และ Pause/Resume
+
+ผ่าน automated tests53ข้อและตรวจ74 asset paths
+ยังต้องฟังและยืนยันการโหลด WAV/OGG บน Android จริง
+ใช้ไฟล์ล่าสุด impactsound(2).zip และ mood(2).zip ตามที่แนบ
+ใช้ Gameover_fix.wav ไม่ใช้ Gameover.wav
+
+คู่มือ roles และระดับเสียง: docs/BUILD-3.1.2-AUDIO.md
+ย้อนกลับ: คัดลอก rollback/index-3.1.1.html มาแทน root/index.html
