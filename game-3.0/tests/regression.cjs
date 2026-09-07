@@ -1,0 +1,24 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const nodes=new Map(),timers=new Map();let timerID=0;
+const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}}),createRadialGradient:()=>({addColorStop(){}})}, {get:(o,k)=>o[k]??(()=>{})});
+function el(id){if(!nodes.has(id))nodes.set(id,{textContent:'',hidden:false,classList:{add(){},remove(){},toggle(){}},addEventListener(){},getContext:()=>ctx,getBoundingClientRect:()=>({left:0,top:0,width:480,height:760}),setPointerCapture(){}});return nodes.get(id)}
+const sandbox={console,performance:{now:()=>0},Math,document:{hidden:false,getElementById:el,addEventListener(){}},requestAnimationFrame(){},setTimeout(fn){timers.set(++timerID,fn);return timerID},clearTimeout(id){timers.delete(id)},window:{TweetyAssets:{images:{},ready:Promise.resolve(),failed:[],manifest:{images:{}},url:x=>x,audioUnlock(){},setMusic(){},setMuted(){},play:()=>true,speakHelper(){}}}};vm.createContext(sandbox);
+vm.runInContext(fs.readFileSync('config/levels-3.0.js','utf8'),sandbox);
+let source=fs.readFileSync('game-3.0.js','utf8');source=source.replace(/\}\)\(\);\s*$/,`window.test={run:code=>eval(code),update,draw,check,reset,buildLevel,shoot,snap,cluster,floating,aimLine};})();`);vm.runInContext(source,sandbox);
+const t=sandbox.window.test,run=code=>t.run(code);let passed=0;function test(name,fn){t.reset();run("A=()=>{};sound=false");timers.clear();fn();passed++;console.log('PASS '+name)}
+test('12 levels, increasing pressure, golden early constants',()=>{const ls=sandbox.window.TWEETY_LEVELS;assert.equal(ls.length,12);assert.equal(ls[0].pressure,.38);assert.equal(ls[1].pressure,.82);assert(ls.every((v,i)=>!i||v.pressure>ls[i-1].pressure));});
+test('shoot retains 690 launch speed and early drag',()=>{run('sound=false;aim={x:240,y:100}');t.shoot();assert.equal(run('Math.hypot(shot.vx,shot.vy)'),690);t.update(1/120);assert(Math.abs(run('Math.hypot(shot.vx,shot.vy)')-690*Math.pow(.988,.5))<1e-8)});
+test('wall retains .94 restitution',()=>{run('shot={x:wall+r-.1,y:450,vx:-100,vy:-100,scale:1,age:0,color:0};sound=false');t.update(0);assert.equal(run('shot.vx'),94)});
+test('match three clears and detached eggs drop',()=>{run('grid=[{row:0,col:0,color:0},{row:0,col:1,color:0},{row:1,col:0,color:1}];shot={x:pos(0,2).x,y:pos(0,2).y,color:0};sound=false');t.snap();assert.equal(run('grid.length'),0);assert.equal(run('falls.length'),1);assert(run('clearPending'));});
+test('score alone never clears level',()=>{run('score=999999');t.check();assert(!run('clearPending'))});
+test('clear timer does not reset on repeated check',()=>{run('grid=[]');t.check();t.update(.3);t.check();assert.equal(run('clearTimer'),.3);t.update(.3);assert(run('transition'));});
+test('cosmetic debris cannot deadlock level clear',()=>{run('grid=[];falls=[{x:0,y:0,life:100,vy:0,vx:0,rot:0,vr:0}]');t.check();t.update(1.81);assert(run('transition'));});
+test('all 12 level transitions finish campaign',()=>{for(let n=1;n<=12;n++){run('grid=[]');t.check();t.update(.6);const pending=[...timers.values()];timers.clear();pending.forEach(f=>f());assert.equal(run('level'),Math.min(n+1,12));}assert(!run('running'));assert.equal(el('overlayTitle').textContent,'TWEETY TAKES OVER!')});
+test('restart cancels pending transition',()=>{run('grid=[]');t.check();t.update(.6);const old=[...timers.values()];t.reset();old.forEach(f=>f());assert.equal(run('level'),1);assert(run('running'))});
+test('pause stops beam, shot, and event timers',()=>{run('paused=true');const c=run('ceiling'),f=run('flyerTimer');t.update(2);assert.equal(run('ceiling'),c);assert.equal(run('flyerTimer'),f)});
+test('helper raises pressure and awards 1500',()=>{run('ceiling=80;bonusEgg={x:240,y:400,vy:0,life:12};shot={x:240,y:400,vx:0,vy:-100,color:0,age:0,scale:1};sound=false');t.update(0);assert.equal(run('ceiling'),62);assert.equal(run('score'),1500);assert.equal(run('bonusEgg'),null)});
+test('hatch is separate and creates falling character',()=>{run('rewardHatch(240,200)');assert.equal(run('hatches.length'),1);assert.equal(run('score'),1000);assert.equal(run('bonusEgg'),null)});
+test('danger loss happens once',()=>{run('grid=[{row:17,col:0,color:0}]');t.check();assert(!run('running'));assert.equal(el('overlayTitle').textContent,'Game Over');t.check();assert(!run('running'))});
+test('baseline launch physics and reflected guide constants remain',()=>{assert(source.includes('while(t<1.7&&!done)'));assert(source.includes('step=1/120'));assert(source.includes('vx=-Math.abs(vx)*.94'));assert(source.includes('Math.pow(.988,step*60)'));});
+test('drawing all character states and launcher is safe',()=>{t.draw();run('reaction="excited";bonusEgg={x:250,y:250};flyer={x:120,y:180,phase:0};hatches=[{x:200,y:300,age:.4,rot:.2}]');t.draw()});
+console.log(`${passed} regression checks passed`);

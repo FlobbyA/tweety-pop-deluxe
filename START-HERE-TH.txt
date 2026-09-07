@@ -1,0 +1,6 @@
+ชุดนี้คือ Build 3.0 RC ยังไม่ใช่เวอร์ชัน final
+เกมใหม่อยู่ใน game-3.0/ อัปโหลดเนื้อหาในโฟลเดอร์นี้ขึ้น GitHub Pages
+ฐานเดิมอยู่ใน baseline-2.2/
+ประวัติ git และสาขาสำรองอยู่ใน source-history/
+อ่าน game-3.0/docs/PRODUCTION_STATUS.md และ MOBILE_CHECKLIST_TH.md ก่อนทดสอบ
+ยังไม่ได้เปลี่ยนเว็บจริงเพราะ GitHub integration ปฏิเสธการเขียน (403)

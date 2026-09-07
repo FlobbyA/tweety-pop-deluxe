@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#100d22">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Tweety Pop Deluxe — Production Candidate 3.0</title>
+<link rel="stylesheet" href="style-3.0.css?v=3.0.0">
+</head>
+<body>
+<main class="shell">
+<header class="hud">
+  <img class="badge" src="assets/characters/tweety_scorekeeper_neutral.png?v=3.0.0" alt="Tweety">
+  <div class="copy">
+    <div class="title">Tweety Pop Deluxe</div>
+    <div class="stats"><span>Score <b id="score">000000</b></span><span>Level <b id="level">1</b>/12</span><span>Build 3.0 RC</span></div>
+  </div>
+  <button id="soundBtn" class="small">Sound On</button>
+  <button id="pauseBtn">Pause</button><button id="restartBtn">New Game</button>
+</header><div id="levelName"></div><div id="danger">DANGER — clear a hanging cluster!</div>
+<section class="stage">
+<div id="pauseLabel" hidden>PAUSED</div><canvas aria-label="Tweety egg shooter playfield" id="game" width="480" height="760"></canvas>
+<div id="overlay" class="overlay">
+ <div class="panel"><img id="overlayCat" src="assets/characters/tweety_scorekeeper_neutral.png?v=3.0.0" alt="Tweety">
+  <h1 id="overlayTitle">Tweety Pop Deluxe</h1>
+  <p id="overlayText">Production Candidate 3.0<br>12 twilight stages. Match 3, drop clusters and let Tweety lend a paw.</p>
+  <button id="startBtn">Start Game</button>
+ </div>
+</div>
+</section>
+<footer>Drag to aim • release to shoot • Match 3+ • Sound starts after tapping Start</footer>
+</main>
+<script src="config/levels-3.0.js?v=3.0.0"></script>
+<script src="config/assets-3.0.js?v=3.0.0"></script>
+<script src="assets-3.0.js?v=3.0.0"></script>
+<script src="game-3.0.js?v=3.0.0"></script>
+</body></html>
