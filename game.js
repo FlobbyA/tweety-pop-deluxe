@@ -7,7 +7,7 @@ const startBtn=document.getElementById("startBtn"),restartBtn=document.getElemen
 const W=480,H=760,wall=43,r=18,rowH=31,cols=10,shooter={x:240,y:665};
 const colors=["#e9413c","#3473df","#2fbd75","#f1d33c","#aa4bd2"],spots=["#ffe0dc","#e1e9ff","#dff8e7","#fff7bd","#f0dcf7"];
 let grid=[],shot=null,current=0,next=1,aim={x:240,y:300},score=0,level=1,running=false,ceiling=0,shots=0;
-let particles=[],falls=[],texts=[],shake=0,recoil=0,impactPulse=0,last=performance.now(),audio=null,sound=true,transition=false;
+let particles=[],falls=[],texts=[],shake=0,recoil=0,impactPulse=0,last=performance.now(),audio=null,sound=true,transition=false,clearPending=false,clearTimer=0;
 
 function A(){if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume()}
 function tone(f,d=.07,type="sine",v=.06,slide=0){if(!sound||!audio)return;let o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime;o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(35,f+slide),t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+d)}
@@ -27,7 +27,7 @@ function pos(row,col){return{x:wall+r+col*r*2+(row%2?r:0),y:67+r+row*rowH+ceilin
 function neighbors(row,col){let odd=row%2,ds=odd?[[0,-1],[0,1],[-1,0],[-1,1],[1,0],[1,1]]:[[0,-1],[0,1],[-1,-1],[-1,0],[1,-1],[1,0]];return ds.map(([a,b])=>({row:row+a,col:col+b})).filter(p=>p.row>=0&&p.col>=0&&p.col<cols)}
 function occupied(row,col){return grid.some(e=>e.row===row&&e.col===col)}
 function buildLevel(n){
- grid=[];ceiling=0;shots=0;particles=[];falls=[];texts=[];shot=null;transition=false;
+ grid=[];ceiling=0;shots=0;particles=[];falls=[];texts=[];shot=null;transition=false;clearPending=false;clearTimer=0;
  let rows=n===1?6:7;
  for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
    let keep=n===1?(Math.random()<.73):(Math.random()<.82 && !(row>4&&col>2&&col<7));
@@ -69,27 +69,51 @@ function launcher(){
 }
 function aimLine(){
  if(!running||shot||transition)return;
- let px=shooter.x,py=shooter.y-37,dx=aim.x-px,dy=aim.y-py;
+ let sx=shooter.x,sy=shooter.y-37,dx=aim.x-sx,dy=aim.y-sy;
  if(dy>-55)dy=-55;
- let len=Math.hypot(dx,dy);dx/=len;dy/=len;
- const left=wall+r,right=W-wall-r,top=67+ceiling+r;
- let pts=[{x:px,y:py}],bounces=0,travel=0,maxTravel=900;
- while(travel<maxTravel && py>top && bounces<3){
-   let tTop=(top-py)/dy;
-   let tWall=Infinity,wallSide=0;
-   if(dx<-.0001){tWall=(left-px)/dx;wallSide=-1}
-   else if(dx>.0001){tWall=(right-px)/dx;wallSide=1}
-   let t=Math.min(tTop,tWall,(maxTravel-travel));
-   if(!isFinite(t)||t<=0)break;
-   px+=dx*t;py+=dy*t;travel+=t;pts.push({x:px,y:py});
-   if(t===tWall && tWall<tTop){dx*=-1;bounces++;px+=dx*.2}
-   else break;
+ let l=Math.hypot(dx,dy);dx/=l;dy/=l;
+
+ // Predict using nearly the same travel model as the real projectile.
+ let px=sx,py=sy,vx=dx*690,vy=dy*690;
+ const step=1/120,maxTime=1.7;
+ let t=0,points=[{x:px,y:py}],lastPlot=0,bounces=0,done=false;
+ while(t<maxTime && !done){
+   let drag=Math.pow(.988,step*60);
+   vx*=drag;vy*=drag;
+   px+=vx*step;py+=vy*step;t+=step;
+
+   if(px-r<wall){px=wall+r;vx=Math.abs(vx)*.94;bounces++}
+   else if(px+r>W-wall){px=W-wall-r;vx=-Math.abs(vx)*.94;bounces++}
+
+   if(t-lastPlot>.035){points.push({x:px,y:py,b:bounces});lastPlot=t}
+
+   if(py-r<67+ceiling){done=true;break}
+   for(let e of grid){
+     let p=pos(e.row,e.col);
+     if(Math.hypot(p.x-px,p.y-py)<r*1.76){done=true;break}
+   }
+   if(bounces>3)done=true;
  }
- x.save();x.strokeStyle="#ffffffa0";x.lineWidth=2.2;x.setLineDash([6,8]);x.lineCap="round";
- x.beginPath();x.moveTo(pts[0].x,pts[0].y);for(let i=1;i<pts.length;i++)x.lineTo(pts[i].x,pts[i].y);x.stroke();
- // bright markers at predicted wall reflection points
- x.setLineDash([]);x.fillStyle="#ffe887";
- for(let i=1;i<pts.length-1;i++){x.beginPath();x.arc(pts[i].x,pts[i].y,4.5,0,Math.PI*2);x.fill()}
+ points.push({x:px,y:py,b:bounces});
+
+ x.save();
+ x.strokeStyle="#ffffffe0";x.lineWidth=2.4;x.setLineDash([7,7]);x.lineCap="round";x.lineJoin="round";
+ x.beginPath();x.moveTo(points[0].x,points[0].y);
+ for(let i=1;i<points.length;i++)x.lineTo(points[i].x,points[i].y);
+ x.stroke();
+ x.setLineDash([]);
+
+ // Highlight every predicted wall-bounce location.
+ x.fillStyle="#ffe576";
+ let prevB=0;
+ for(let i=1;i<points.length;i++){
+   if(points[i].b>prevB){x.beginPath();x.arc(points[i].x,points[i].y,5,0,Math.PI*2);x.fill();prevB=points[i].b}
+ }
+
+ // Predicted impact marker.
+ let p=points[points.length-1];
+ x.strokeStyle="#ffe576";x.lineWidth=2;
+ x.beginPath();x.arc(p.x,p.y,7,0,Math.PI*2);x.stroke();
  x.restore()
 }
 function puff(px,py,ci,count=8){
@@ -125,16 +149,35 @@ function snap(){
  check()
 }
 function check(){
- if(grid.length===0){if(transition)return;transition=true;running=false;sfx.clear();setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},850);return}
- for(let e of grid){let p=pos(e.row,e.col);if(p.y+r>shooter.y-95){finish(false);return}}
+ if(grid.length===0){
+   clearPending=true;
+   clearTimer=0;
+   return
+ }
+ for(let e of grid){
+   let p=pos(e.row,e.col);
+   if(p.y+r>shooter.y-95){finish(false);return}
+ }
 }
 function finish(win){running=false;transition=false;win?sfx.clear():sfx.lose();overlay.classList.remove("hidden");ot.textContent=win?"Two-Level Slice Complete!":"Game Over";op.textContent=win?`Score ${String(score).padStart(6,"0")} — both vertical-slice levels cleared.`:`The eggs reached Tweety. Score ${String(score).padStart(6,"0")}.`;startBtn.textContent="Play Again"}
 function shoot(){
- if(!running||shot||transition)return;A();let sy=shooter.y-37,dx=aim.x-shooter.x,dy=aim.y-sy;if(dy>-55)dy=-55;let l=Math.hypot(dx,dy),speed=690;
+ if(!running||shot||transition||clearPending)return;A();let sy=shooter.y-37,dx=aim.x-shooter.x,dy=aim.y-sy;if(dy>-55)dy=-55;let l=Math.hypot(dx,dy),speed=690;
  shot={x:shooter.x,y:sy,vx:dx/l*speed,vy:dy/l*speed,color:current,age:0,scale:.72};recoil=1;shake=2;sfx.launch()
 }
 function update(dt){
  recoil=Math.max(0,recoil-dt*6);shake=Math.max(0,shake-dt*18);impactPulse=Math.max(0,impactPulse-dt);
+ if(clearPending && !transition){
+   // Wait until all visible falling eggs/particles have finished, then hold briefly before changing level.
+   if(grid.length===0 && falls.length===0 && particles.length===0 && !shot){
+     clearTimer+=dt;
+     if(clearTimer>=1.1){
+       transition=true;running=false;clearPending=false;sfx.clear();
+       setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},500)
+     }
+   }else{
+     clearTimer=0;
+   }
+ }
  grid.forEach(e=>e.w=Math.max(0,(e.w||0)-dt*5));
  if(shot){
    shot.age+=dt;shot.scale=Math.min(1,shot.scale+dt*5);
