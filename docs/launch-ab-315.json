@@ -1,0 +1,32 @@
+[
+  {
+    "file": "game-3.1.4.js",
+    "milliseconds": 100,
+    "travelPixels": 82.21187731289592
+  },
+  {
+    "file": "game-3.1.4.js",
+    "milliseconds": 200,
+    "travelPixels": 157.30698594293045
+  },
+  {
+    "file": "game-3.1.4.js",
+    "milliseconds": 240,
+    "travelPixels": 185.49217769288066
+  },
+  {
+    "file": "game-3.1.5.js",
+    "milliseconds": 100,
+    "travelPixels": 93.91122771454127
+  },
+  {
+    "file": "game-3.1.5.js",
+    "milliseconds": 200,
+    "travelPixels": 175.74199281968936
+  },
+  {
+    "file": "game-3.1.5.js",
+    "milliseconds": 240,
+    "travelPixels": 203.9475797010532
+  }
+]

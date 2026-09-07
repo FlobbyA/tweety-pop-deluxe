@@ -1,0 +1,2954 @@
+[
+  {
+    "hz": 60,
+    "name": "angle0",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.4333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.4,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle1",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.2166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.1833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle2",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.05,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.0166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle3",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.95,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle4",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.85,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.8333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle5",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle6",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle7",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.65,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle8",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle9",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle10",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle11",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle12",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.55,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle13",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle14",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle15",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle16",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle17",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle18",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle19",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle20",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle21",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle22",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle23",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle24",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle25",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle26",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle27",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle28",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle29",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle30",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle31",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle32",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle33",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle34",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.65,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle35",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle36",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle37",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.8166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle38",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.9333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle39",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.0333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.0166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angle40",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.1666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.15,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle0",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.4222222222222223,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.4,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle1",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.211111111111111,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.1888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle2",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.0444444444444445,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.0222222222222221,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle3",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.9444444444444444,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9222222222222223,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle4",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.8222222222222222,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle5",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle6",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle7",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6555555555555556,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle8",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6111111111111112,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle9",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5777777777777777,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle10",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5555555555555556,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle11",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5555555555555556,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle12",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5444444444444444,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5222222222222223,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle13",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5222222222222223,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle14",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5111111111111111,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle15",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle16",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle17",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle18",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle19",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle20",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle21",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4444444444444444,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle22",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle23",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle24",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle25",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45555555555555555,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle26",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle27",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle28",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5222222222222223,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle29",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5111111111111111,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle30",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle31",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5555555555555556,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle32",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle33",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle34",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6777777777777778,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6555555555555556,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle35",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7222222222222222,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle36",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle37",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.8111111111111111,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle38",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.9333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle39",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.0333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.011111111111111,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angle40",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.1666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.1444444444444444,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle0",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.425,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.4,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle1",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.2083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.1833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle2",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.0416666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.0166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle3",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.9416666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9166666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle4",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.85,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.825,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle5",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7833333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle6",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle7",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.675,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.65,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle8",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle9",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.575,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle10",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle11",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle12",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5416666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle13",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.525,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle14",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 1
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle15",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle16",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.49166666666666664,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle17",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle18",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle19",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle20",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle21",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.44166666666666665,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle22",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle23",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.45,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle24",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle25",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.48333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle26",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle27",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.475,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle28",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.525,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle29",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle30",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5916666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle31",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5583333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 9
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle32",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.5666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle33",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.6333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.6,
+      "attached": [
+        {
+          "row": 7,
+          "col": 8
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle34",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.675,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.65,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle35",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.725,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7,
+      "attached": [
+        {
+          "row": 7,
+          "col": 6
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle36",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.7666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.7333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle37",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.8083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle38",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.9333333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 0.9,
+      "attached": [
+        {
+          "row": 7,
+          "col": 3
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle39",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.0333333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.0083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 2
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angle40",
+    "before": {
+      "file": "game-3.1.4.js",
+      "seconds": 1.1666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.5.js",
+      "seconds": 1.1416666666666666,
+      "attached": [
+        {
+          "row": 7,
+          "col": 0
+        }
+      ]
+    }
+  }
+]
