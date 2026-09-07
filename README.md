@@ -1,32 +1,18 @@
-# Tweety Pop Deluxe — Prototype v0.1
+# Tweety Pop Deluxe — Vertical Slice v1
 
-Mobile-first HTML5 prototype for GitHub Pages.
+A two-level mobile-first vertical slice focused on game feel rather than placeholder mechanics.
 
-## What is implemented
-- Portrait mobile layout
-- Stone side columns and descending top beam
-- Egg launcher / slingshot
-- Tap or drag aiming
-- Wall bounce
-- Egg collision / snapping
-- Match 3+ removal
-- Floating cluster drop
-- Score system
-- Prototype Tweety back-view silhouette
-- Prototype top scorekeeper portrait
-- Win / Game Over state
-- Responsive Android/iPhone web layout
+## Included
+- Visible current egg above Tweety plus Next Egg preview
+- Two playable levels
+- Weightier launch with impulse and subtle drag
+- Firm wall bounce and impact feedback
+- Squash/wobble on contact
+- Match-pop particles and score feedback
+- Detached clusters fall with gravity, spin and bounce
+- Descending ceiling with rumble feedback
+- Procedural Web Audio sound effects (no external audio assets)
+- Level clear and game over sequences
+- Touch-first controls for mobile browsers
 
-## Run locally
-Open `index.html` in a modern browser.
-
-## GitHub Pages
-Upload these files to the root of a GitHub repository:
-- index.html
-- style.css
-- game.js
-
-Then enable GitHub Pages from the repository settings.
-
-## Important
-All visual assets are placeholders in v0.1. The final Tweety artwork, UI styling, audio, and level progression should be added only after gameplay/scale is approved.
+All graphics are original procedural placeholders pending final Tweety artwork and final art assets.

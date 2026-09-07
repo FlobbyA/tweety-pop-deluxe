@@ -1,277 +1,146 @@
 (() => {
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
-const scoreEl = document.getElementById('score');
-const overlay = document.getElementById('overlay');
-const overlayTitle = document.getElementById('overlayTitle');
-const overlayText = document.getElementById('overlayText');
-const startBtn = document.getElementById('startBtn');
-const restartBtn = document.getElementById('restartBtn');
+"use strict";
+const c=document.getElementById("game"),x=c.getContext("2d");
+const scoreEl=document.getElementById("score"),levelEl=document.getElementById("level");
+const overlay=document.getElementById("overlay"),ot=document.getElementById("overlayTitle"),op=document.getElementById("overlayText");
+const startBtn=document.getElementById("startBtn"),restartBtn=document.getElementById("restartBtn"),soundBtn=document.getElementById("soundBtn");
+const W=480,H=760,wall=43,r=18,rowH=31,cols=10,shooter={x:240,y:665};
+const colors=["#e9413c","#3473df","#2fbd75","#f1d33c","#aa4bd2"],spots=["#ffe0dc","#e1e9ff","#dff8e7","#fff7bd","#f0dcf7"];
+let grid=[],shot=null,current=0,next=1,aim={x:240,y:300},score=0,level=1,running=false,ceiling=0,shots=0;
+let particles=[],falls=[],texts=[],shake=0,recoil=0,impactPulse=0,last=performance.now(),audio=null,sound=true,transition=false;
 
-const W = canvas.width, H = canvas.height;
-const wall = 42;
-const topHud = 54;
-const shooterY = H - 72;
-const r = 18;
-const cellW = r * 2;
-const rowH = 31;
-const cols = 10;
-const colors = ['#df3b36','#315bd8','#2eb469','#f2d83d','#b24ad5'];
-const spot = ['#ffd9d5','#d9e0ff','#d7f6dd','#fff6bb','#efd5f7'];
-
-let grid, projectile, aimX, score, running, gameOver, ceilingOffset, shots, targetToWin;
-
-function reset(){
-  grid = [];
-  score = 0; running = false; gameOver = false;
-  ceilingOffset = 0; shots = 0; targetToWin = 28;
-  projectile = null; aimX = W/2;
-  seedGrid();
-  updateScore();
-  draw();
-}
-
-function seedGrid(){
-  const rows = 6;
-  for(let row=0; row<rows; row++){
-    for(let col=0; col<cols; col++){
-      if(Math.random() < 0.72){
-        const idx = Math.floor(Math.random()*colors.length);
-        grid.push({row,col,color:idx});
-      }
-    }
-  }
-}
-
-function gridPos(row,col){
-  const stagger = row % 2 ? r : 0;
-  return {
-    x: wall + r + col*cellW + stagger,
-    y: topHud + r + row*rowH + ceilingOffset
-  };
-}
-
-function drawBackground(){
-  const g = ctx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#32284c');
-  g.addColorStop(.55,'#241e3a');
-  g.addColorStop(1,'#181424');
-  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-
-  // stone side columns
-  for(const x of [0,W-wall]){
-    ctx.fillStyle='#7f6d56';ctx.fillRect(x,0,wall,H);
-    for(let y=0;y<H;y+=54){
-      ctx.fillStyle = (Math.floor(y/54)%2)?'#9b8567':'#8a755b';
-      ctx.fillRect(x+4,y+4,wall-8,46);
-      ctx.strokeStyle='#4b3e31';ctx.lineWidth=3;ctx.strokeRect(x+4,y+4,wall-8,46);
-    }
-  }
-  // descending top beam
-  const beamY = topHud - 12 + ceilingOffset;
-  ctx.fillStyle='#8e795d';ctx.fillRect(wall,beamY,W-wall*2,30);
-  for(let x=wall;x<W-wall;x+=54){
-    ctx.fillStyle=(Math.floor(x/54)%2)?'#a88f69':'#927b5d';
-    ctx.fillRect(x+3,beamY+3,48,24);
-  }
-
-  // floor ledge
-  ctx.fillStyle='#6e5b49';ctx.fillRect(wall,H-42,W-wall*2,42);
-}
-
-function drawEgg(x,y,colorIndex,alpha=1){
-  ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);
-  ctx.fillStyle=colors[colorIndex];
-  ctx.beginPath();ctx.ellipse(0,0,r*0.95,r*1.08,0,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=spot[colorIndex];
-  const pts=[[-7,-5],[7,-8],[2,6],[-9,8],[10,7]];
-  for(const [px,py] of pts){
-    ctx.beginPath();ctx.arc(px,py,4.2,0,Math.PI*2);ctx.fill();
-  }
-  ctx.restore();
-}
-
-function drawTweetyBack(){
-  // placeholder silhouette only; final artwork will replace this.
-  const x=W/2,y=H-30;
-  ctx.save();ctx.translate(x,y);
-  ctx.fillStyle='#0b0b0e';
-  ctx.beginPath();ctx.ellipse(0,-26,35,42,0,0,Math.PI*2);ctx.fill();
-  ctx.beginPath();ctx.moveTo(-24,-55);ctx.lineTo(-11,-80);ctx.lineTo(-2,-57);ctx.fill();
-  ctx.beginPath();ctx.moveTo(24,-55);ctx.lineTo(11,-80);ctx.lineTo(2,-57);ctx.fill();
-  ctx.strokeStyle='#111';ctx.lineWidth=10;ctx.lineCap='round';
-  ctx.beginPath();ctx.moveTo(28,-17);ctx.quadraticCurveTo(48,-8,43,13);ctx.stroke();
-  ctx.restore();
-}
-
-function drawSlingshot(){
-  const x=W/2,y=shooterY+24;
-  ctx.strokeStyle='#7b271d';ctx.lineWidth=12;ctx.lineCap='round';
-  ctx.beginPath();ctx.moveTo(x-26,y+20);ctx.lineTo(x-12,y-18);ctx.moveTo(x+26,y+20);ctx.lineTo(x+12,y-18);ctx.stroke();
-  ctx.strokeStyle='#34130f';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x-12,y-18);ctx.lineTo(x+12,y-18);ctx.stroke();
-}
-
-function drawAim(){
-  if(!running || projectile) return;
-  const sx=W/2, sy=shooterY;
-  let dx=aimX-sx, dy=-180;
-  const len=Math.hypot(dx,dy);dx/=len;dy/=len;
-  ctx.strokeStyle='#ffffff66';ctx.lineWidth=2;ctx.setLineDash([8,8]);
-  ctx.beginPath();ctx.moveTo(sx,sy);
-  for(let d=25;d<180;d+=26){ctx.lineTo(sx+dx*d,sy+dy*d)}
-  ctx.stroke();ctx.setLineDash([]);
-}
-
-function draw(){
-  drawBackground();
-  for(const e of grid){
-    const p=gridPos(e.row,e.col);drawEgg(p.x,p.y,e.color);
-  }
-  drawAim();
-  drawSlingshot();
-  drawTweetyBack();
-  if(projectile) drawEgg(projectile.x,projectile.y,projectile.color);
-}
-
-function nearestCell(x,y){
-  const approxRow=Math.max(0,Math.round((y-topHud-r-ceilingOffset)/rowH));
-  const stagger=approxRow%2?r:0;
-  const approxCol=Math.max(0,Math.min(cols-1,Math.round((x-wall-r-stagger)/cellW)));
-  return {row:approxRow,col:approxCol};
-}
-
+function A(){if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume()}
+function tone(f,d=.07,type="sine",v=.06,slide=0){if(!sound||!audio)return;let o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime;o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(35,f+slide),t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+d)}
+function noise(d=.08,v=.035){if(!sound||!audio)return;let n=Math.floor(audio.sampleRate*d),b=audio.createBuffer(1,n,audio.sampleRate),q=b.getChannelData(0);for(let i=0;i<n;i++)q[i]=(Math.random()*2-1)*(1-i/n);let s=audio.createBufferSource(),g=audio.createGain();s.buffer=b;g.gain.value=v;s.connect(g);g.connect(audio.destination);s.start()}
+const sfx={
+ launch(){tone(125,.11,"triangle",.12,180);tone(65,.09,"sine",.08,-15);noise(.045,.025)},
+ wall(){tone(260,.045,"square",.035,-70)},
+ hit(){tone(105,.07,"triangle",.07,-25);noise(.04,.025)},
+ pop(n=3){for(let i=0;i<Math.min(n,6);i++)setTimeout(()=>tone(430+i*55,.055,"sine",.045,120),i*18)},
+ drop(){tone(180,.11,"triangle",.04,-100)},
+ beam(){tone(62,.22,"sawtooth",.05,-20);noise(.15,.025)},
+ clear(){[392,523,659,784].forEach((f,i)=>setTimeout(()=>tone(f,.18,"triangle",.055,90),i*90))},
+ lose(){[220,174,130].forEach((f,i)=>setTimeout(()=>tone(f,.25,"sawtooth",.05,-40),i*130))}
+};
+function randColor(){let present=[...new Set(grid.map(e=>e.color))];return present.length?present[Math.floor(Math.random()*present.length)]:Math.floor(Math.random()*5)}
+function pos(row,col){return{x:wall+r+col*r*2+(row%2?r:0),y:67+r+row*rowH+ceiling}}
+function neighbors(row,col){let odd=row%2,ds=odd?[[0,-1],[0,1],[-1,0],[-1,1],[1,0],[1,1]]:[[0,-1],[0,1],[-1,-1],[-1,0],[1,-1],[1,0]];return ds.map(([a,b])=>({row:row+a,col:col+b})).filter(p=>p.row>=0&&p.col>=0&&p.col<cols)}
 function occupied(row,col){return grid.some(e=>e.row===row&&e.col===col)}
-function neighbors(row,col){
-  const odd=row%2;
-  const ds=odd
-    ? [[0,-1],[0,1],[-1,0],[-1,1],[1,0],[1,1]]
-    : [[0,-1],[0,1],[-1,-1],[-1,0],[1,-1],[1,0]];
-  return ds.map(([dr,dc])=>({row:row+dr,col:col+dc}))
-    .filter(p=>p.row>=0&&p.col>=0&&p.col<cols);
+function buildLevel(n){
+ grid=[];ceiling=0;shots=0;particles=[];falls=[];texts=[];shot=null;transition=false;
+ let rows=n===1?6:7;
+ for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
+   let keep=n===1?(Math.random()<.73):(Math.random()<.82 && !(row>4&&col>2&&col<7));
+   if(keep){let palette=n===1?5:5;grid.push({row,col,color:Math.floor(Math.random()*palette),w:0})}
+ }
+ current=randColor();next=randColor();levelEl.textContent=n;running=true;
 }
-function clusterFrom(start){
-  const startEgg=grid.find(e=>e.row===start.row&&e.col===start.col);
-  if(!startEgg) return [];
-  const out=[], stack=[start], seen=new Set();
-  while(stack.length){
-    const cur=stack.pop(), key=cur.row+','+cur.col;
-    if(seen.has(key))continue;seen.add(key);
-    const egg=grid.find(e=>e.row===cur.row&&e.col===cur.col);
-    if(!egg||egg.color!==startEgg.color)continue;
-    out.push(egg);
-    for(const n of neighbors(cur.row,cur.col)) stack.push(n);
-  }
-  return out;
+function reset(){score=0;level=1;scoreEl.textContent="000000";buildLevel(1)}
+function egg(px,py,ci,scale=1,rot=0,alpha=1){
+ x.save();x.globalAlpha=alpha;x.translate(px,py);x.rotate(rot);x.scale(scale,scale);
+ let g=x.createRadialGradient(-6,-8,2,0,2,22);g.addColorStop(0,"#fff8");g.addColorStop(.24,colors[ci]);g.addColorStop(1,"#0005");
+ x.fillStyle=g;x.beginPath();x.ellipse(0,0,r*.94,r*1.08,0,0,Math.PI*2);x.fill();
+ x.strokeStyle="#0005";x.lineWidth=2;x.stroke();
+ x.fillStyle=spots[ci];[[-7,-5],[7,-8],[2,6],[-9,8],[10,7]].forEach(p=>{x.beginPath();x.arc(p[0],p[1],4,0,7);x.fill()});
+ x.restore()
 }
-function removeFloating(){
-  const connected=new Set(), stack=[];
-  for(const e of grid) if(e.row===0) stack.push({row:e.row,col:e.col});
-  while(stack.length){
-    const cur=stack.pop(),key=cur.row+','+cur.col;
-    if(connected.has(key))continue;
-    if(!occupied(cur.row,cur.col))continue;
-    connected.add(key);
-    for(const n of neighbors(cur.row,cur.col)) stack.push(n);
-  }
-  const before=grid.length;
-  grid=grid.filter(e=>connected.has(e.row+','+e.col));
-  return before-grid.length;
+function bg(){
+ let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"#33284f");g.addColorStop(.55,"#201a35");g.addColorStop(1,"#100d1c");x.fillStyle=g;x.fillRect(0,0,W,H);
+ for(let sx of [0,W-wall]){x.fillStyle="#574837";x.fillRect(sx,0,wall,H);for(let y=0;y<H;y+=52){let gg=x.createLinearGradient(sx,y,sx+wall,y+52);gg.addColorStop(0,"#aa916b");gg.addColorStop(1,"#725e47");x.fillStyle=gg;x.fillRect(sx+4,y+4,wall-8,44);x.strokeStyle="#45382c";x.lineWidth=3;x.strokeRect(sx+4,y+4,wall-8,44)}}
+ let by=55+ceiling;x.fillStyle="#6e5a43";x.fillRect(wall,by,W-wall*2,31);for(let xx=wall;xx<W-wall;xx+=58){x.fillStyle="#9b805d";x.fillRect(xx+3,by+3,52,25)}
+ x.fillStyle="#6b5743";x.fillRect(wall,H-42,W-wall*2,42)
 }
-
-function snapProjectile(){
-  const cell=nearestCell(projectile.x, projectile.y);
-  let c={...cell};
-  if(occupied(c.row,c.col)){
-    const options=neighbors(c.row,c.col).filter(p=>!occupied(p.row,p.col));
-    if(options.length){
-      options.sort((a,b)=>{
-        const pa=gridPos(a.row,a.col),pb=gridPos(b.row,b.col);
-        return Math.hypot(pa.x-projectile.x,pa.y-projectile.y)-Math.hypot(pb.x-projectile.x,pb.y-projectile.y);
-      });
-      c=options[0];
-    } else c.row++;
-  }
-  grid.push({row:c.row,col:c.col,color:projectile.color});
-  projectile=null;
-  const cl=clusterFrom(c);
-  if(cl.length>=3){
-    const keys=new Set(cl.map(e=>e.row+','+e.col));
-    grid=grid.filter(e=>!keys.has(e.row+','+e.col));
-    const floating=removeFloating();
-    const gain=cl.length*100+floating*150;
-    score+=gain; updateScore();
-  }
-  shots++;
-  if(shots%6===0) ceilingOffset += 10;
-  checkState();
+function cat(){
+ let y=H-25+recoil*5;x.save();x.translate(W/2,y);x.fillStyle="#09090c";
+ x.beginPath();x.ellipse(0,-28,34,41,0,0,7);x.fill();
+ x.beginPath();x.moveTo(-24,-55);x.lineTo(-12,-79);x.lineTo(-2,-57);x.fill();
+ x.beginPath();x.moveTo(24,-55);x.lineTo(12,-79);x.lineTo(2,-57);x.fill();
+ x.strokeStyle="#101014";x.lineWidth=10;x.lineCap="round";x.beginPath();x.moveTo(27,-17);x.quadraticCurveTo(48,-7,42,15);x.stroke();x.restore()
 }
-
-function checkState(){
-  if(score>=targetToWin*100){
-    endGame(true);return;
-  }
-  let danger=false;
-  for(const e of grid){
-    const p=gridPos(e.row,e.col);
-    if(p.y+r>shooterY-48){danger=true;break;}
-  }
-  if(danger) endGame(false);
+function sling(){
+ let y=shooter.y+30+recoil*9;x.strokeStyle="#6f261c";x.lineWidth=11;x.lineCap="round";x.beginPath();x.moveTo(214,y+15);x.lineTo(228,y-22);x.moveTo(266,y+15);x.lineTo(252,y-22);x.stroke();
+ x.strokeStyle="#2a0d0b";x.lineWidth=4;x.beginPath();x.moveTo(228,y-22);x.lineTo(252,y-22);x.stroke()
 }
-
-function endGame(win){
-  running=false; gameOver=!win;
-  overlay.classList.remove('hidden');
-  overlayTitle.textContent=win?'Level Complete!':'Game Over';
-  overlayText.textContent=win
-    ? `Score ${score.toString().padStart(6,'0')} — prototype level cleared.`
-    : `The eggs reached Tweety. Score ${score.toString().padStart(6,'0')}.`;
-  startBtn.textContent='Play Again';
+function launcher(){
+ if(shot)return;
+ // current egg is deliberately above Tweety and never hidden
+ egg(shooter.x,shooter.y-37,current,1.08+Math.sin(performance.now()/180)*.015);
+ x.save();x.font="bold 11px system-ui";x.textAlign="center";x.fillStyle="#cfc5e5";x.fillText("NEXT",405,667);egg(405,696,next,.72);x.restore()
 }
-
-function shoot(targetX){
-  if(!running||projectile) return;
-  const sx=W/2, sy=shooterY;
-  const tx=Math.max(wall+r,Math.min(W-wall-r,targetX));
-  let dx=tx-sx, dy=-220;
-  const len=Math.hypot(dx,dy);
-  const speed=7.5;
-  projectile={x:sx,y:sy,vx:dx/len*speed,vy:dy/len*speed,color:Math.floor(Math.random()*colors.length)};
+function aimLine(){
+ if(!running||shot||transition)return;
+ let dx=aim.x-shooter.x,dy=aim.y-(shooter.y-37);if(dy>-40)dy=-40;let len=Math.hypot(dx,dy);dx/=len;dy/=len;
+ x.save();x.strokeStyle="#fff7";x.lineWidth=2;x.setLineDash([5,9]);x.beginPath();x.moveTo(shooter.x,shooter.y-58);for(let d=30;d<210;d+=22)x.lineTo(shooter.x+dx*d,shooter.y-37+dy*d);x.stroke();x.restore()
 }
-
-function tick(){
-  if(projectile){
-    projectile.x+=projectile.vx; projectile.y+=projectile.vy;
-    if(projectile.x-r<wall){projectile.x=wall+r;projectile.vx*=-1}
-    if(projectile.x+r>W-wall){projectile.x=W-wall-r;projectile.vx*=-1}
-    let hit=projectile.y-r<topHud+ceilingOffset;
-    if(!hit){
-      for(const e of grid){
-        const p=gridPos(e.row,e.col);
-        if(Math.hypot(p.x-projectile.x,p.y-projectile.y)<r*1.8){hit=true;break}
-      }
-    }
-    if(hit) snapProjectile();
-  }
-  draw(); requestAnimationFrame(tick);
+function puff(px,py,ci,count=10){for(let i=0;i<count;i++){let a=Math.random()*Math.PI*2,s=80+Math.random()*150;particles.push({x:px,y:py,vx:Math.cos(a)*s,vy:Math.sin(a)*s-30,t:.45+Math.random()*.25,ci,size:2+Math.random()*5})}}
+function text(t,px,py,big=false){texts.push({t,x:px,y:py,life:.8,big})}
+function nearest(px,py){let row=Math.max(0,Math.round((py-67-r-ceiling)/rowH)),st=row%2?r:0,col=Math.max(0,Math.min(cols-1,Math.round((px-wall-r-st)/(r*2))));return{row,col}}
+function cluster(st){
+ let first=grid.find(e=>e.row===st.row&&e.col===st.col);if(!first)return[];
+ let out=[],stack=[st],seen=new Set;
+ while(stack.length){let q=stack.pop(),k=q.row+","+q.col;if(seen.has(k))continue;seen.add(k);let e=grid.find(z=>z.row===q.row&&z.col===q.col);if(!e||e.color!==first.color)continue;out.push(e);neighbors(q.row,q.col).forEach(n=>stack.push(n))}
+ return out
 }
-
-function updateScore(){scoreEl.textContent=score.toString().padStart(6,'0')}
-
-function canvasX(ev){
-  const rect=canvas.getBoundingClientRect();
-  const p=ev.touches?ev.touches[0]:ev;
-  return (p.clientX-rect.left)/rect.width*W;
+function floating(){
+ let con=new Set,stack=grid.filter(e=>e.row===0).map(e=>({row:e.row,col:e.col}));
+ while(stack.length){let q=stack.pop(),k=q.row+","+q.col;if(con.has(k)||!occupied(q.row,q.col))continue;con.add(k);neighbors(q.row,q.col).forEach(n=>stack.push(n))}
+ let loose=grid.filter(e=>!con.has(e.row+","+e.col));grid=grid.filter(e=>con.has(e.row+","+e.col));return loose
 }
-canvas.addEventListener('pointermove',e=>{aimX=canvasX(e)});
-canvas.addEventListener('pointerdown',e=>{aimX=canvasX(e)});
-canvas.addEventListener('pointerup',e=>{aimX=canvasX(e);shoot(aimX)});
-canvas.addEventListener('touchmove',e=>{e.preventDefault();aimX=canvasX(e)},{passive:false});
-
-function start(){
-  reset();running=true;overlay.classList.add('hidden');
+function snap(){
+ let cell=nearest(shot.x,shot.y),c0={...cell};
+ if(occupied(c0.row,c0.col)){let opts=neighbors(c0.row,c0.col).filter(p=>!occupied(p.row,p.col));if(opts.length){opts.sort((a,b)=>{let A=pos(a.row,a.col),B=pos(b.row,b.col);return Math.hypot(A.x-shot.x,A.y-shot.y)-Math.hypot(B.x-shot.x,B.y-shot.y)});c0=opts[0]}else c0.row++}
+ let pp=pos(c0.row,c0.col),ci=shot.color;grid.push({row:c0.row,col:c0.col,color:ci,w:1});shot=null;shake=5;impactPulse=.18;sfx.hit();
+ let cl=cluster(c0);
+ if(cl.length>=3){
+   let keys=new Set(cl.map(e=>e.row+","+e.col));cl.forEach(e=>{let p=pos(e.row,e.col);puff(p.x,p.y,e.color,12)});grid=grid.filter(e=>!keys.has(e.row+","+e.col));sfx.pop(cl.length);
+   let loose=floating();loose.forEach(e=>{let p=pos(e.row,e.col);falls.push({x:p.x,y:p.y,ci:e.color,vx:(Math.random()-.5)*80,vy:-20-Math.random()*50,rot:0,vr:(Math.random()-.5)*6})});
+   let gain=cl.length*100+loose.length*175;score+=gain;scoreEl.textContent=String(score).padStart(6,"0");text(loose.length?`DROP! +${gain}`:`+${gain}`,pp.x,pp.y,true);if(loose.length)sfx.drop()
+ }
+ shots++;current=next;next=randColor();
+ let every=level===1?7:5;if(shots%every===0){ceiling+=level===1?11:14;sfx.beam();shake=4;text("RUMBLE!",240,105,true)}
+ check()
 }
-startBtn.addEventListener('click',start);
-restartBtn.addEventListener('click',start);
-
-reset();tick();
+function check(){
+ if(grid.length===0||score>=(level===1?3200:7600)){if(transition)return;transition=true;running=false;sfx.clear();setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},850);return}
+ for(let e of grid){let p=pos(e.row,e.col);if(p.y+r>shooter.y-95){finish(false);return}}
+}
+function finish(win){running=false;transition=false;win?sfx.clear():sfx.lose();overlay.classList.remove("hidden");ot.textContent=win?"Two-Level Slice Complete!":"Game Over";op.textContent=win?`Score ${String(score).padStart(6,"0")} — both vertical-slice levels cleared.`:`The eggs reached Tweety. Score ${String(score).padStart(6,"0")}.`;startBtn.textContent="Play Again"}
+function shoot(){
+ if(!running||shot||transition)return;A();let sy=shooter.y-37,dx=aim.x-shooter.x,dy=aim.y-sy;if(dy>-55)dy=-55;let l=Math.hypot(dx,dy),speed=690;
+ shot={x:shooter.x,y:sy,vx:dx/l*speed,vy:dy/l*speed,color:current,age:0,scale:.72};recoil=1;shake=2;sfx.launch()
+}
+function update(dt){
+ recoil=Math.max(0,recoil-dt*6);shake=Math.max(0,shake-dt*18);impactPulse=Math.max(0,impactPulse-dt);
+ grid.forEach(e=>e.w=Math.max(0,(e.w||0)-dt*5));
+ if(shot){
+   shot.age+=dt;shot.scale=Math.min(1,shot.scale+dt*5);
+   // strong initial impulse, then subtle air drag: fast and weighty without ruining aim
+   let drag=Math.pow(.988,dt*60);shot.vx*=drag;shot.vy*=drag;shot.x+=shot.vx*dt;shot.y+=shot.vy*dt;
+   if(shot.x-r<wall){shot.x=wall+r;shot.vx=Math.abs(shot.vx)*.94;shake=2;sfx.wall()}
+   if(shot.x+r>W-wall){shot.x=W-wall-r;shot.vx=-Math.abs(shot.vx)*.94;shake=2;sfx.wall()}
+   let hit=shot.y-r<67+ceiling;
+   if(!hit)for(let e of grid){let p=pos(e.row,e.col);if(Math.hypot(p.x-shot.x,p.y-shot.y)<r*1.76){hit=true;break}}
+   if(hit)snap()
+ }
+ particles.forEach(p=>{p.t-=dt;p.vy+=360*dt;p.x+=p.vx*dt;p.y+=p.vy*dt});particles=particles.filter(p=>p.t>0);
+ falls.forEach(f=>{f.vy+=650*dt;f.x+=f.vx*dt;f.y+=f.vy*dt;f.rot+=f.vr*dt;if(f.y>H-55&&f.vy>0){f.y=H-55;f.vy*=-.25;f.vx*=.7}});falls=falls.filter(f=>f.y<H+70);
+ texts.forEach(t=>{t.life-=dt;t.y-=28*dt});texts=texts.filter(t=>t.life>0)
+}
+function draw(){
+ x.save();let sx=(Math.random()-.5)*shake,sy=(Math.random()-.5)*shake;x.translate(sx,sy);bg();
+ grid.forEach(e=>{let p=pos(e.row,e.col),w=e.w||0;egg(p.x,p.y,e.color,1+w*.12,Math.sin(performance.now()/55+e.col)*w*.08)});
+ falls.forEach(f=>egg(f.x,f.y,f.ci,1,f.rot));
+ particles.forEach(p=>{x.globalAlpha=Math.min(1,p.t*2);x.fillStyle=spots[p.ci];x.beginPath();x.arc(p.x,p.y,p.size,0,7);x.fill();x.globalAlpha=1});
+ aimLine();sling();cat();launcher();if(shot)egg(shot.x,shot.y,shot.color,shot.scale,Math.atan2(shot.vy,shot.vx)+Math.PI/2);
+ texts.forEach(t=>{x.globalAlpha=Math.min(1,t.life*2);x.textAlign="center";x.font=`900 ${t.big?25:18}px system-ui`;x.lineWidth=5;x.strokeStyle="#241632";x.strokeText(t.t,t.x,t.y);x.fillStyle="#ffe276";x.fillText(t.t,t.x,t.y);x.globalAlpha=1});
+ x.restore()
+}
+function loop(now){let dt=Math.min(.033,(now-last)/1000);last=now;update(dt);draw();requestAnimationFrame(loop)}
+function pointer(e){let q=c.getBoundingClientRect();return{x:(e.clientX-q.left)/q.width*W,y:(e.clientY-q.top)/q.height*H}}
+c.addEventListener("pointerdown",e=>{e.preventDefault();aim=pointer(e);A()});
+c.addEventListener("pointermove",e=>{if(e.buttons||e.pointerType==="touch")aim=pointer(e)});
+c.addEventListener("pointerup",e=>{aim=pointer(e);shoot()});
+function start(){A();reset();overlay.classList.add("hidden");startBtn.textContent="Start Game"}
+startBtn.onclick=start;restartBtn.onclick=start;soundBtn.onclick=()=>{sound=!sound;soundBtn.textContent=sound?"Sound On":"Sound Off";if(sound)A()};
+reset();running=false;requestAnimationFrame(loop);
 })();
