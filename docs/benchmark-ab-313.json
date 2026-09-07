@@ -1,0 +1,326 @@
+[
+  {
+    "cache": 0,
+    "name": "desktop",
+    "width": 1280,
+    "height": 900,
+    "dpr": 1,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.666249999999998,
+      "p95": 16.700000000000728,
+      "fps": 60.001500037500946
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 184.50000000325963,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 18.599999998230487,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 2.600000001024455,
+          "calls": 360
+        },
+        "character": {
+          "ms": 0.7999999998137355,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 815.7999999998137,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 1032.7999999998137,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 471.78125,
+        "cssHeight": 746.984375,
+        "dpr": 1
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "cache": 0,
+    "name": "mobile-high-dpr",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.665833333333335,
+      "p95": 16.700000000000728,
+      "fps": 60.003000150007495
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 181.89999999897555,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 24.499999999068677,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 2.9999999995343387,
+          "calls": 360
+        },
+        "character": {
+          "ms": 0.6000000000931323,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 825.2000000011176,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 1046.0999999996275,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "cache": 0,
+    "name": "mobile-cpu4",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 4,
+    "errors": [],
+    "raf": {
+      "mean": 33.67916666666666,
+      "p95": 50,
+      "fps": 29.69194605963133
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 976.1000000024214,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 82.79999999795109,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 15.200000000186265,
+          "calls": 360
+        },
+        "character": {
+          "ms": 6.400000000372529,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 3970.399999999907,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 5112.700000000186,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "cache": 1,
+    "name": "desktop",
+    "width": 1280,
+    "height": 900,
+    "dpr": 1,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.666249999999998,
+      "p95": 16.799999999999727,
+      "fps": 60.001500037500946
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 40.399999998975545,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 17.100000000558794,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 2.299999998882413,
+          "calls": 360
+        },
+        "character": {
+          "ms": 0.7999999988824129,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 172.7000000011176,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 241,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 471.78125,
+        "cssHeight": 746.984375,
+        "dpr": 1
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "cache": 1,
+    "name": "mobile-high-dpr",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.66625,
+      "p95": 16.700000000000728,
+      "fps": 60.00150003750093
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 41.00000000046566,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 17.70000000530854,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 1.5999999991618097,
+          "calls": 360
+        },
+        "character": {
+          "ms": 0.6000000005587935,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 166.19999999552965,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 234.39999999990687,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "cache": 1,
+    "name": "mobile-cpu4",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 4,
+    "errors": [],
+    "raf": {
+      "mean": 16.66625,
+      "p95": 16.799999999999272,
+      "fps": 60.00150003750093
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 177.8000000002794,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 70.20000000158325,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 10.600000001024455,
+          "calls": 360
+        },
+        "character": {
+          "ms": 1.900000000372529,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 779.6000000024214,
+          "calls": 15300
+        },
+        "draw": {
+          "ms": 1075.1000000000931,
+          "calls": 180
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  }
+]

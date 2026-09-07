@@ -1,0 +1,22 @@
+Tweety Pop Deluxe 3.1.3 — ปรับการวาดภาพ / รอรับรองบน Android จริง
+ใช้แพตช์นี้บน Build3.1.2 เดิม
+
+1. แตก ZIP และอัปโหลดไฟล์/โฟลเดอร์ภายในไป root เดิม แทนที่ index.html
+2. เก็บไฟล์เก่าทั้งหมด ไม่ลบ assets, config, CSS, เสียง หรือ baseline
+3. หลัง GitHub Pages deploy เปิดเกม URL เดิมและตรวจป้าย3.1.3
+4. ลองเล่นบน Pixel9 Pro XL + Chrome ตามปกติก่อน
+
+แก้เฉพาะการวาด SVG ซ้ำ: วาดเป็นภาพในหน่วยความจำครั้งเดียวที่ขนาดต้นฉบับ
+ไม่เปลี่ยนเกม ความเร็ว จำนวนเอฟเฟกต์ ภาพตัวละคร เสียง หรือความยาก
+ผลจำลอง Linux Chrome / DPR3 / CPU4:29.7→60FPS, draw28.4→5.97ms
+นี่ไม่ใช่การทดสอบ Android จริง ต้องยืนยันบน Pixel อีกครั้ง
+
+ถ้ายังกระตุกหรืออยากส่งข้อมูลวัด:
+เปิด https://flobbya.github.io/tweety-pop-deluxe/?perf=1
+เล่น30–60วินาที แล้วกด Save performance JSON ส่งไฟล์กลับมาครับ
+เทียบโค้ดวาดแบบเดิมได้ด้วย ?perf=1&cache=0
+โหมดปกติไม่มีแผง debug และไม่มีส่งข้อมูลออกอัตโนมัติ
+
+ย้อนกลับ: นำ rollback/index-3.1.2.html มาแทน root/index.html
+รายงานละเอียด: docs/BUILD-3.1.3-PERFORMANCE.md
+ข้อมูลก่อน–หลัง: docs/benchmark-ab-313.json

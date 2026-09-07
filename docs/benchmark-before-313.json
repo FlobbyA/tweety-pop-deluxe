@@ -1,0 +1,161 @@
+[
+  {
+    "name": "desktop",
+    "width": 1280,
+    "height": 900,
+    "dpr": 1,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.66583333333333,
+      "p95": 16.800000000000182,
+      "fps": 60.00300015000751
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 175.19999999832362,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 16.20000000158325,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 2.7000000001862645,
+          "calls": 360
+        },
+        "character": {
+          "ms": 0.8999999999068677,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 747.7999999988824,
+          "calls": 14940
+        },
+        "draw": {
+          "ms": 0,
+          "calls": 0
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 471.78125,
+        "cssHeight": 746.984375,
+        "dpr": 1
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "name": "mobile-high-dpr",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 1,
+    "errors": [],
+    "raf": {
+      "mean": 16.66583333333333,
+      "p95": 16.799999999999727,
+      "fps": 60.00300015000751
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 23.500000004656613,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 14.19999999878928,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 2.499999998603016,
+          "calls": 360
+        },
+        "character": {
+          "ms": 1.1000000000931323,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 813.2000000001863,
+          "calls": 13140
+        },
+        "draw": {
+          "ms": 0,
+          "calls": 0
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  },
+  {
+    "name": "mobile-cpu4",
+    "width": 448,
+    "height": 960,
+    "dpr": 3,
+    "cpu": 4,
+    "errors": [],
+    "raf": {
+      "mean": 26.665416666666665,
+      "p95": 33.400000000000546,
+      "fps": 37.501757894901324
+    },
+    "profile": {
+      "parts": {
+        "bg": {
+          "ms": 892.3000000012107,
+          "calls": 180
+        },
+        "aimLine": {
+          "ms": 87.20000000158325,
+          "calls": 180
+        },
+        "pedestal": {
+          "ms": 19.100000000558794,
+          "calls": 360
+        },
+        "character": {
+          "ms": 5.000000000465661,
+          "calls": 360
+        },
+        "egg": {
+          "ms": 3707.099999997299,
+          "calls": 14940
+        },
+        "draw": {
+          "ms": 0,
+          "calls": 0
+        },
+        "update": {
+          "ms": 0,
+          "calls": 0
+        }
+      },
+      "canvas": {
+        "width": 480,
+        "height": 760,
+        "cssWidth": 432,
+        "cssHeight": 684,
+        "dpr": 3
+      },
+      "heap": 10000000
+    }
+  }
+]
