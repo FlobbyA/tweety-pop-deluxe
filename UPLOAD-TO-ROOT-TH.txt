@@ -1,0 +1,9 @@
+แพตช์นี้ใช้กับ repository ที่มี baseline-2.2/ และ game-3.0/ อยู่แล้ว
+แตก ZIP แล้วอัปโหลดไฟล์และโฟลเดอร์ภายในทั้งหมดลงระดับ root ของ repo เดิม
+ไม่ต้องสร้างโฟลเดอร์ game-3.0 ใหม่ ไม่ต้องลบไฟล์ 2.2
+ยอมให้ index.html และ README.md ที่ root ถูกแทนที่
+เก็บ baseline-2.2/, game-3.0/, source-history/ ตามเดิม
+หลัง GitHub Pages deploy เปิด URL เดิม ต้องเห็น Build 3.0 RC · 3.0.1
+แตะ Enable menu music เพื่ออนุญาตเสียง จากนั้น Start Game
+แพตช์นี้ยังไม่ถูกเผยแพร่โดย AI เพราะ GitHub ปฏิเสธการเขียนด้วย 403
+วิธีย้อนกลับ: คัดลอก baseline-2.2/index.html มาแทน index.html ที่ root
