@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#171426" />
+  <title>Tweety Pop Deluxe — Prototype v0.1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <section class="game-shell">
+      <header class="hud">
+        <div class="scorekeeper">
+          <div class="portrait" aria-label="Tweety placeholder">
+            <div class="cat-face">T</div>
+          </div>
+          <div class="hud-copy">
+            <div class="game-title">Tweety Pop Deluxe</div>
+            <div class="hud-row">
+              <span>Score <b id="score">000000</b></span>
+              <span>Level <b id="level">1</b></span>
+            </div>
+          </div>
+          <button id="restartBtn" class="restart">New Game</button>
+        </div>
+      </header>
+
+      <section class="playfield-wrap">
+        <canvas id="game" width="480" height="760" aria-label="Tweety Pop Deluxe prototype"></canvas>
+        <div class="overlay" id="overlay">
+          <div class="panel">
+            <h1 id="overlayTitle">Tweety Pop Deluxe</h1>
+            <p id="overlayText">Prototype v0.1 — drag or tap to aim, then release to shoot.</p>
+            <button id="startBtn">Start</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="help">
+        <span>Touch: drag/tap to aim • release to shoot</span>
+        <span>Match 3+ eggs • clear enough eggs to win</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
