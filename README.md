@@ -1,28 +1,12 @@
-# Tweety Pop Deluxe — Full-Feel Test v2
+# Tweety Pop Deluxe — Full-Feel Test v2.1
 
-A mechanics-complete two-level test intended to feel much closer to a finished early-2000s egg shooter.
+Hotfix for level progression after a fully cleared board.
 
-## Core gameplay
-- Long trajectory prediction with side-wall reflections and impact marker.
-- Weighty launch, drag, wall impacts, pop/drop particles and procedural sound.
-- Match 3+, detached-cluster gravity drops and real board-clear level completion.
-- Finite falling-piece lifetimes prevent level-clear deadlocks.
+## Fixed
+- Level-clear timer is now armed only once instead of being reset every animation frame.
+- Level transition clears temporary flyer/bonus/hatch state when the board is empty.
+- Cosmetic falling pieces and particles can no longer deadlock progression.
+- After the board is empty, the game waits briefly for visual debris, shows `LEVEL CLEAR!`, then advances automatically.
+- Build marker updated to `Build 2.1` with cache-busted JS/CSS.
 
-## Pressure / difficulty
-- The upper beam now continuously creeps downward.
-- Level 1 pressure is deliberately slow.
-- Level 2 pressure is more than twice as fast.
-- Periodic shot-count "STOMP" pulses push the field further down, with stronger/faster pressure in level 2.
-
-## Satisfaction / bonus systems
-- Successful consecutive matches build COMBO.
-- Four-match combo rewards a bomb shot that clears a radius and pushes the ceiling upward.
-- Large groups award BIG POP bonus feedback.
-- Occasionally an egg begins shaking. Pop its matching cluster before time expires to hatch a Tweety reward and bonus score.
-- A placeholder flying Tweety periodically enters with “BONUS IS COMING!” and drops a golden bonus egg.
-- Shoot the golden egg before it expires for bonus points and ceiling relief.
-
-## Verification
-The HUD shows `Build 2.0`. JS/CSS use cache-busting query strings so mobile browsers request this build.
-
-Final visual art is still placeholder/procedural; this build targets gameplay feel and timing.
+All Full-Feel v2 systems remain: long reflected aiming guide, weighted shooting, continuous descending beam, stomp pressure, combo/bomb rewards, shaking hatch bonus, and incoming bonus event.

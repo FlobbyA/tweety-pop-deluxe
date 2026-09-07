@@ -146,8 +146,23 @@ function snap(){
  check()
 }
 function check(){
- if(grid.length===0){clearPending=true;clearTimer=0;return}
- for(let e of grid){let p=pos(e.row,e.col);if(p.y+r>shooter.y-95){finish(false);return}}
+ if(grid.length===0){
+   // Arm level-clear only once. Do not reset clearTimer every frame.
+   if(!clearPending && !transition){
+     clearPending=true;
+     clearTimer=0;
+     flyer=null;
+     bonusEgg=null;
+     hatchTarget=null;
+     hatchTimer=0;
+     bombQueued=false;
+   }
+   return
+ }
+ for(let e of grid){
+   let p=pos(e.row,e.col);
+   if(p.y+r>shooter.y-95){finish(false);return}
+ }
 }
 function finish(win){running=false;transition=false;clearPending=false;win?sfx.clear():sfx.lose();overlay.classList.remove("hidden");ot.textContent=win?"Full-Feel Test Complete!":"Game Over";op.textContent=win?`Score ${String(score).padStart(6,"0")} • Max combo x${maxCombo}`:`The eggs reached Tweety. Score ${String(score).padStart(6,"0")}.`;startBtn.textContent="Play Again"}
 
@@ -176,9 +191,20 @@ function update(dt){
 
  if(clearPending&&!transition){
    if(grid.length===0&&!shot){
-     // Falling pieces now have finite lifetimes, so transition cannot deadlock.
-     if(falls.length===0&&particles.length===0){clearTimer+=dt;if(clearTimer>=.8){transition=true;running=false;clearPending=false;sfx.clear();text("LEVEL CLEAR!",240,300,true);setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},850)}}
-   }else clearTimer=0
+     clearTimer+=dt;
+     // Prefer waiting for visual debris, but never allow cosmetics to deadlock progression.
+     let visualsDone=(falls.length===0&&particles.length===0);
+     if((visualsDone&&clearTimer>=.55)||clearTimer>=1.8){
+       falls=[];particles=[];transition=true;running=false;clearPending=false;
+       sfx.clear();text("LEVEL CLEAR!",240,300,true);
+       setTimeout(()=>{
+         if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}
+         else finish(true)
+       },750)
+     }
+   }else{
+     clearTimer=0;
+   }
  }
 
  if(shot){
