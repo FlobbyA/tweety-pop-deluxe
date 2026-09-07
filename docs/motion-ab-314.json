@@ -1,0 +1,218 @@
+[
+  {
+    "hz": 60,
+    "name": "direct",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "angled",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.6166666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.5,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 60,
+    "name": "one-wall",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 1,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "direct",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.5888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "angled",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.6111111111111112,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 90,
+    "name": "one-wall",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.9888888888888889,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "direct",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.5833333333333334,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.4666666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 4
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "angled",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.6083333333333333,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.49166666666666664,
+      "attached": [
+        {
+          "row": 7,
+          "col": 7
+        }
+      ]
+    }
+  },
+  {
+    "hz": 120,
+    "name": "one-wall",
+    "before": {
+      "file": "game-3.1.3.js",
+      "seconds": 0.9916666666666667,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    },
+    "after": {
+      "file": "game-3.1.4.js",
+      "seconds": 0.8,
+      "attached": [
+        {
+          "row": 7,
+          "col": 5
+        }
+      ]
+    }
+  }
+]
