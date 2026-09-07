@@ -1,0 +1,20 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+function setup(){const instances=[],timers=new Map(),listeners={};let tid=0;
+class Audio{constructor(src){this.src=src;this.events={};this.playCount=0;this.paused=true;instances.push(this)}addEventListener(k,f){(this.events[k]??=new Set()).add(f)}removeEventListener(k,f){this.events[k]?.delete(f)}emit(k){for(const f of [...this.events[k]??[]])f()}play(){this.playCount++;if(this.reject)return Promise.reject(Error('NotAllowedError'));this.paused=false;return Promise.resolve()}pause(){this.paused=true}}
+const s={window:{},document:{hidden:false,addEventListener:(k,f)=>listeners[k]=f},Audio,Image:class{set src(v){this.onload()}},fetch:()=>Promise.reject(Error('404')),setTimeout:f=>{timers.set(++tid,f);return tid},clearTimeout:id=>timers.delete(id),SpeechSynthesisUtterance:class{}};vm.createContext(s);vm.runInContext(fs.readFileSync('config/assets-3.1.0.js','utf8'),s);vm.runInContext(fs.readFileSync('assets-3.1.0.js','utf8'),s);return {s,a:s.window.TweetyAssets,instances,timers,listeners}}
+let count=0;async function test(name,f){await f(setup());count++;console.log('PASS '+name)}
+(async()=>{
+await test('no autoplay before user gesture',({a,instances})=>{a.setScene('menu');assert(instances.every(x=>!x.playCount))});
+await test('gesture starts only menu music; gameplay switches tracks',({a,instances})=>{a.audioUnlock();assert.equal(instances[0].playCount,1);assert.equal(instances[1].playCount,0);a.setScene('gameplay');assert(instances[0].paused);assert(!instances[1].paused)});
+await test('ready silences music and cue completion resolves',async({a,instances})=>{a.audioUnlock();a.setScene('ready');const p=a.cue('sfx_get_ready');assert(instances[0].paused);instances[3].emit('ended');await p;assert(instances[3].paused)});
+await test('autoplay rejection resolves cue without blocking',async({a,instances})=>{a.audioUnlock();instances[3].reject=true;await a.cue('sfx_get_ready')});
+await test('missing file resolves cue without blocking',async({a,instances})=>{a.audioUnlock();instances[3].error={code:4};assert.equal(await a.cue('sfx_get_ready'),false)});
+await test('slow/hung file is bounded by timeout',async({a,timers})=>{a.audioUnlock();const p=a.cue('sfx_get_ready');for(const fn of [...timers.values()])fn();await p});
+await test('mute stops cue and music; unmute retains scene',async({a,instances})=>{a.audioUnlock();const p=a.cue('sfx_get_ready');a.setMuted(true);await p;assert(instances.every(x=>x.paused));assert.equal(await a.cue('sfx_game_over'),false);a.setMuted(false);assert(!instances[0].paused)});
+await test('hidden tab stops cue and all music',async({a,instances,s,listeners})=>{a.audioUnlock();const p=a.cue('sfx_get_ready');s.document.hidden=true;listeners.visibilitychange();await p;assert(instances.every(x=>x.paused))});
+await test('clear and lose use named external roles',({a,instances,timers})=>{a.audioUnlock();a.play('clear');assert.equal(instances[4].playCount,1);a.play('lose');assert(instances[4].paused);assert.equal(instances[5].playCount,1);for(const fn of [...timers.values()])fn()});
+await test('stopCues settles in-flight preparation',async({a})=>{a.audioUnlock();const p=a.cue('sfx_get_ready');a.stopCues();await p});
+await test('campaign track loops and replaces gameplay; hide/mute/menu stop it',({a,instances,s,listeners})=>{a.audioUnlock();a.setScene('gameplay');a.setScene('campaign');assert(instances[1].paused);assert(!instances[2].paused);assert(instances[2].loop);s.document.hidden=true;listeners.visibilitychange();assert(instances[2].paused);s.document.hidden=false;listeners.visibilitychange();assert(!instances[2].paused);a.setMuted(true);assert(instances[2].paused);a.setMuted(false);assert(!instances[2].paused);a.setScene('menu');assert(instances[2].paused)});
+await test('missing future cat and celebration buffers silently return false',({a})=>{a.audioUnlock();assert.equal(a.play('cat_nice_01'),false);assert.equal(a.play('sfx_campaign_cheer'),false)});
+console.log(`${count} audio lifecycle checks passed`);
+})().catch(e=>{console.error(e);process.exitCode=1});

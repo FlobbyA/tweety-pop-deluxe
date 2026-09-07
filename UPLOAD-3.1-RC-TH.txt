@@ -1,0 +1,20 @@
+Tweety Pop Deluxe — Build 3.1 RC (3.1.0)
+ROOT PATCH สำหรับ repository ที่ติดตั้ง Build 3.0.2 แล้ว
+
+1. แตก ZIP และอัปโหลดไฟล์/โฟลเดอร์ข้างในไปยัง root ของ repository
+   index.html ต้องอยู่ระดับเดียวกับ index.html เดิม ไม่สร้างโฟลเดอร์ครอบเพิ่ม
+2. ยอมให้แทนที่ index.html เก็บไฟล์/โฟลเดอร์เก่าทั้งหมดไว้
+   ห้ามลบ baseline-2.2, game-3.0, source-history หรือไฟล์ 3.0.2
+3. รอ GitHub Pages deploy แล้วเปิด URL เดิม
+   https://flobbya.github.io/tweety-pop-deluxe/
+   ตรวจป้าย Build 3.1 RC · 3.1.0 และจำนวนด่าน /15
+4. หากต้องย้อนกลับ ให้คัดลอก rollback/index-3.0.2.html มาแทน root/index.html
+
+เปลี่ยนครั้งนี้: ตัวละครโปร่งใส, หน้าเปิด Hero, ฟองคำพูดพาสเทลและ hooks เสียงแมว,
+Helper ตามความอันตรายและ cooldown, ด่าน13–15, หน้าฉลองพร้อม Tweety คาบปลาทูน่า
+เสียงแมว/applause/cheer เป็น silent placeholders รอไฟล์จริง เพลงฉลองเป็นทำนองชั่วคราวสร้างใหม่
+คู่มือ asset และข้อมูลทดสอบอยู่ใน docs/BUILD-3.1-RC.md
+
+ผ่าน automated tests 33 game +12 audio และตรวจ58 asset paths
+ยังไม่ได้ทดสอบภาพจริงใน browser/Android ของ Build นี้ และยังไม่ได้ deploy เว็บจริง
+โปรดเล่นด่าน13–15 เพื่อยืนยันความยาก ความลื่น หน้าเปิด/หน้าจบและพื้นที่ปุ่มบนมือถือ
