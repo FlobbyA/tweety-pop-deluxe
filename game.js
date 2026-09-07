@@ -16,7 +16,7 @@ const sfx={
  launch(){tone(125,.11,"triangle",.12,180);tone(65,.09,"sine",.08,-15);noise(.045,.025)},
  wall(){tone(260,.045,"square",.035,-70)},
  hit(){tone(105,.07,"triangle",.07,-25);noise(.04,.025)},
- pop(n=3){for(let i=0;i<Math.min(n,6);i++)setTimeout(()=>tone(430+i*55,.055,"sine",.045,120),i*18)},
+ pop(n=3){for(let i=0;i<Math.min(n,3);i++)setTimeout(()=>tone(430+i*70,.05,"sine",.04,110),i*20)},
  drop(){tone(180,.11,"triangle",.04,-100)},
  beam(){tone(62,.22,"sawtooth",.05,-20);noise(.15,.025)},
  clear(){[392,523,659,784].forEach((f,i)=>setTimeout(()=>tone(f,.18,"triangle",.055,90),i*90))},
@@ -69,10 +69,34 @@ function launcher(){
 }
 function aimLine(){
  if(!running||shot||transition)return;
- let dx=aim.x-shooter.x,dy=aim.y-(shooter.y-37);if(dy>-40)dy=-40;let len=Math.hypot(dx,dy);dx/=len;dy/=len;
- x.save();x.strokeStyle="#fff7";x.lineWidth=2;x.setLineDash([5,9]);x.beginPath();x.moveTo(shooter.x,shooter.y-58);for(let d=30;d<210;d+=22)x.lineTo(shooter.x+dx*d,shooter.y-37+dy*d);x.stroke();x.restore()
+ let px=shooter.x,py=shooter.y-37,dx=aim.x-px,dy=aim.y-py;
+ if(dy>-55)dy=-55;
+ let len=Math.hypot(dx,dy);dx/=len;dy/=len;
+ const left=wall+r,right=W-wall-r,top=67+ceiling+r;
+ let pts=[{x:px,y:py}],bounces=0,travel=0,maxTravel=900;
+ while(travel<maxTravel && py>top && bounces<3){
+   let tTop=(top-py)/dy;
+   let tWall=Infinity,wallSide=0;
+   if(dx<-.0001){tWall=(left-px)/dx;wallSide=-1}
+   else if(dx>.0001){tWall=(right-px)/dx;wallSide=1}
+   let t=Math.min(tTop,tWall,(maxTravel-travel));
+   if(!isFinite(t)||t<=0)break;
+   px+=dx*t;py+=dy*t;travel+=t;pts.push({x:px,y:py});
+   if(t===tWall && tWall<tTop){dx*=-1;bounces++;px+=dx*.2}
+   else break;
+ }
+ x.save();x.strokeStyle="#ffffffa0";x.lineWidth=2.2;x.setLineDash([6,8]);x.lineCap="round";
+ x.beginPath();x.moveTo(pts[0].x,pts[0].y);for(let i=1;i<pts.length;i++)x.lineTo(pts[i].x,pts[i].y);x.stroke();
+ // bright markers at predicted wall reflection points
+ x.setLineDash([]);x.fillStyle="#ffe887";
+ for(let i=1;i<pts.length-1;i++){x.beginPath();x.arc(pts[i].x,pts[i].y,4.5,0,Math.PI*2);x.fill()}
+ x.restore()
 }
-function puff(px,py,ci,count=10){for(let i=0;i<count;i++){let a=Math.random()*Math.PI*2,s=80+Math.random()*150;particles.push({x:px,y:py,vx:Math.cos(a)*s,vy:Math.sin(a)*s-30,t:.45+Math.random()*.25,ci,size:2+Math.random()*5})}}
+function puff(px,py,ci,count=8){
+ count=Math.min(count,8);
+ for(let i=0;i<count;i++){let a=Math.random()*Math.PI*2,s=75+Math.random()*135;particles.push({x:px,y:py,vx:Math.cos(a)*s,vy:Math.sin(a)*s-25,t:.38+Math.random()*.18,ci,size:2+Math.random()*4})}
+ if(particles.length>90)particles.splice(0,particles.length-90)
+}
 function text(t,px,py,big=false){texts.push({t,x:px,y:py,life:.8,big})}
 function nearest(px,py){let row=Math.max(0,Math.round((py-67-r-ceiling)/rowH)),st=row%2?r:0,col=Math.max(0,Math.min(cols-1,Math.round((px-wall-r-st)/(r*2))));return{row,col}}
 function cluster(st){
@@ -92,8 +116,8 @@ function snap(){
  let pp=pos(c0.row,c0.col),ci=shot.color;grid.push({row:c0.row,col:c0.col,color:ci,w:1});shot=null;shake=5;impactPulse=.18;sfx.hit();
  let cl=cluster(c0);
  if(cl.length>=3){
-   let keys=new Set(cl.map(e=>e.row+","+e.col));cl.forEach(e=>{let p=pos(e.row,e.col);puff(p.x,p.y,e.color,12)});grid=grid.filter(e=>!keys.has(e.row+","+e.col));sfx.pop(cl.length);
-   let loose=floating();loose.forEach(e=>{let p=pos(e.row,e.col);falls.push({x:p.x,y:p.y,ci:e.color,vx:(Math.random()-.5)*80,vy:-20-Math.random()*50,rot:0,vr:(Math.random()-.5)*6})});
+   let keys=new Set(cl.map(e=>e.row+","+e.col));cl.forEach(e=>{let p=pos(e.row,e.col);puff(p.x,p.y,e.color,7)});grid=grid.filter(e=>!keys.has(e.row+","+e.col));sfx.pop(cl.length);
+   let loose=floating();loose.slice(0,45).forEach(e=>{let p=pos(e.row,e.col);falls.push({x:p.x,y:p.y,ci:e.color,vx:(Math.random()-.5)*75,vy:-20-Math.random()*45,rot:0,vr:(Math.random()-.5)*5})});
    let gain=cl.length*100+loose.length*175;score+=gain;scoreEl.textContent=String(score).padStart(6,"0");text(loose.length?`DROP! +${gain}`:`+${gain}`,pp.x,pp.y,true);if(loose.length)sfx.drop()
  }
  shots++;current=next;next=randColor();
@@ -101,7 +125,7 @@ function snap(){
  check()
 }
 function check(){
- if(grid.length===0||score>=(level===1?3200:7600)){if(transition)return;transition=true;running=false;sfx.clear();setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},850);return}
+ if(grid.length===0){if(transition)return;transition=true;running=false;sfx.clear();setTimeout(()=>{if(level===1){level=2;buildLevel(2);text("LEVEL 2",240,330,true)}else finish(true)},850);return}
  for(let e of grid){let p=pos(e.row,e.col);if(p.y+r>shooter.y-95){finish(false);return}}
 }
 function finish(win){running=false;transition=false;win?sfx.clear():sfx.lose();overlay.classList.remove("hidden");ot.textContent=win?"Two-Level Slice Complete!":"Game Over";op.textContent=win?`Score ${String(score).padStart(6,"0")} — both vertical-slice levels cleared.`:`The eggs reached Tweety. Score ${String(score).padStart(6,"0")}.`;startBtn.textContent="Play Again"}
@@ -135,7 +159,7 @@ function draw(){
  texts.forEach(t=>{x.globalAlpha=Math.min(1,t.life*2);x.textAlign="center";x.font=`900 ${t.big?25:18}px system-ui`;x.lineWidth=5;x.strokeStyle="#241632";x.strokeText(t.t,t.x,t.y);x.fillStyle="#ffe276";x.fillText(t.t,t.x,t.y);x.globalAlpha=1});
  x.restore()
 }
-function loop(now){let dt=Math.min(.033,(now-last)/1000);last=now;update(dt);draw();requestAnimationFrame(loop)}
+function loop(now){let dt=Math.min(.028,(now-last)/1000);last=now;update(dt);draw();requestAnimationFrame(loop)}
 function pointer(e){let q=c.getBoundingClientRect();return{x:(e.clientX-q.left)/q.width*W,y:(e.clientY-q.top)/q.height*H}}
 c.addEventListener("pointerdown",e=>{e.preventDefault();aim=pointer(e);A()});
 c.addEventListener("pointermove",e=>{if(e.buttons||e.pointerType==="touch")aim=pointer(e)});

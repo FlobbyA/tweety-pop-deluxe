@@ -1,18 +1,13 @@
-# Tweety Pop Deluxe — Vertical Slice v1
+# Tweety Pop Deluxe — Vertical Slice v1.1
 
-A two-level mobile-first vertical slice focused on game feel rather than placeholder mechanics.
+Focused gameplay revision after mobile playtest.
 
-## Included
-- Visible current egg above Tweety plus Next Egg preview
-- Two playable levels
-- Weightier launch with impulse and subtle drag
-- Firm wall bounce and impact feedback
-- Squash/wobble on contact
-- Match-pop particles and score feedback
-- Detached clusters fall with gravity, spin and bounce
-- Descending ceiling with rumble feedback
-- Procedural Web Audio sound effects (no external audio assets)
-- Level clear and game over sequences
-- Touch-first controls for mobile browsers
+## Changes from v1
+- Long trajectory guide now reaches the upper play area.
+- Predicted wall reflections are drawn after side-wall impact, including reflection markers.
+- Level completion now requires the board to be truly empty; score no longer advances the level.
+- Reduced particle/audio overhead for smoother mobile performance while retaining impact and weight.
+- Current egg remains clearly visible above Tweety and Next Egg remains visible.
+- Two playable levels, gravity drops, wall impacts, rumble, scoring and procedural Web Audio remain enabled.
 
-All graphics are original procedural placeholders pending final Tweety artwork and final art assets.
+Final character and environment artwork is still intentionally not included; this build is for gameplay/game-feel validation.
